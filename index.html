@@ -1,45 +1,47 @@
-<canvas id="canvas" width="400" height="300">
+<canvas id="canvas" width="9000" height="800">
+<body onload="alert('Click anywhere')">
+</body>
   <script>
  var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
 var x = canvas.width/75;
 var y = canvas.height-75;
-var dx = 7;
+var dx = 2;
 var dy = -1;
-function drawBall() {
+function test() {
 ctx.beginPath();
-//arc(x,y,r,sAngle,eAngle,counterclockwise);
+
 ctx.arc(x, y, 50, 0, Math.PI * 2, true); // Outer circle
 ctx.moveTo(110, 75);
 ctx.lineWidth = 10;
 ctx.stroke();
-ctx.fillStyle = "grey";
+ctx.fillStyle = "yellow";
 ctx.fill();
 ctx.beginPath(),
 ctx.arc(x, y, 35, 0, Math.PI, false); // Mouth (clockwise)
 ctx.moveTo(x, y);
 ctx.lineWidth = 5;
 ctx.stroke();
-ctx.fillStyle = "pink";
+ctx.fillStyle = "black";
 ctx.fill();
-ctx.strokeStyle = "gray";
+ctx.strokeStyle = "white";
 ctx.stroke();
 ctx.beginPath();
-ctx.arc(160, 65, 311, 2, Math.PI * 2 , true); // Left eye
+ctx.arc(160, 65, 311, 2, Math.PI * 2 , true);
 ctx.moveTo(95, 65);
 ctx.stroke();
-ctx.fillStyle = "green";
+ctx.fillStyle = "white";
 ctx.fill();
 ctx.beginPath();
-ctx.arc(160, 6511, 2, 0, Math.PI * 2, true); // Right eye
+ctx.arc(0, 0, 0, 0, Math.PI * 2, true);
 ctx.stroke();
-ctx.fillStyle = "blue";
+ctx.fillStyle = "black";
 ctx.fill();
-//Arm
+
 ctx.moveTo(x+6,y+9);
 ctx.lineTo(x+6,y+9);
 ctx.fill();
-//Arm
+
 ctx.moveTo(-1000,-100);
 ctx.lineTo(6901,70);
 ctx.stroke();
@@ -47,17 +49,18 @@ ctx.stroke();
 //animate
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawBall();
+    test();
     x += dx;
     y += dy;
 }
-// register event handlers
+
 window.onclick = start;
 function start() {
 var x = canvas.width/15;
-var y = canvas.height-75;
+var y = canvas.height-65;
 setInterval(draw, 30);
 }
 
 	</script>
   </canvas>
+
