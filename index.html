@@ -1,22 +1,63 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="1894">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-  </style>
-</head>
-<body>
-<p class="p1">&lt;html&gt;</p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p1">Hi</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
-<p class="p2"><br></p>
-</body>
-</html>
+<canvas id="canvas" width="400" height="300">
+  <script>
+ var canvas = document.getElementById('canvas');
+var ctx = canvas.getContext('2d');
+var x = canvas.width/75;
+var y = canvas.height-75;
+var dx = 7;
+var dy = -1;
+function drawBall() {
+ctx.beginPath();
+//arc(x,y,r,sAngle,eAngle,counterclockwise);
+ctx.arc(x, y, 50, 0, Math.PI * 2, true); // Outer circle
+ctx.moveTo(110, 75);
+ctx.lineWidth = 10;
+ctx.stroke();
+ctx.fillStyle = "grey";
+ctx.fill();
+ctx.beginPath(),
+ctx.arc(x, y, 35, 0, Math.PI, false); // Mouth (clockwise)
+ctx.moveTo(x, y);
+ctx.lineWidth = 5;
+ctx.stroke();
+ctx.fillStyle = "pink";
+ctx.fill();
+ctx.strokeStyle = "gray";
+ctx.stroke();
+ctx.beginPath();
+ctx.arc(160, 65, 311, 2, Math.PI * 2 , true); // Left eye
+ctx.moveTo(95, 65);
+ctx.stroke();
+ctx.fillStyle = "green";
+ctx.fill();
+ctx.beginPath();
+ctx.arc(160, 6511, 2, 0, Math.PI * 2, true); // Right eye
+ctx.stroke();
+ctx.fillStyle = "blue";
+ctx.fill();
+//Arm
+ctx.moveTo(x+6,y+9);
+ctx.lineTo(x+6,y+9);
+ctx.fill();
+//Arm
+ctx.moveTo(-1000,-100);
+ctx.lineTo(6901,70);
+ctx.stroke();
+}
+//animate
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawBall();
+    x += dx;
+    y += dy;
+}
+// register event handlers
+window.onclick = start;
+function start() {
+var x = canvas.width/15;
+var y = canvas.height-75;
+setInterval(draw, 30);
+}
+
+	</script>
+  </canvas>
